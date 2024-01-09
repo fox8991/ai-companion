@@ -93,22 +93,19 @@ export async function POST(
 
         const resp = String(
             await model
-                .call(
-                    `
-                    ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix.
-
-                    ${companion.instructions}
-
-                    Below are the relevant details about ${companion.name}'s past and the conversation you are in.
-                    ${relevantHistory}
-
-                    ${recentChatHistory}\n${companion.name}:
-                    `
-                )
-                .catch(console.error)
-        );
-
-        console.log(resp);
+              .call(
+                `
+              ONLY generate plain sentences without prefix of who is speaking. DO NOT use ${companion.name}: prefix. 
+      
+              ${companion.instructions}
+      
+              Below are relevant details about ${companion.name}'s past and the conversation you are in.
+              ${relevantHistory}
+      
+              ${recentChatHistory}\n${companion.name}:`
+              )
+              .catch(console.error)
+          );
 
         const cleaned = resp.replaceAll(",", "");
         const chunks = cleaned.split("\n");
