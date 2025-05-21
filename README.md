@@ -1,5 +1,34 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+## Overview
+
+This project is an AI companion platform built with Next.js. It allows users to interact with AI-powered companions, manage subscriptions for premium features, and includes user authentication.
+
+## Main Functions
+
+*   **AI Companion Interaction:** Users can engage in conversations with AI companions. The platform leverages various AI models and technologies like Langchain for complex interactions.
+*   **User Authentication:** Secure user registration and login are handled by Clerk.js.
+*   **Subscription Management:** Stripe integration enables users to subscribe to premium features and manage their payment details.
+*   **Vector Database:** Pinecone is utilized for efficient similarity searches, likely enhancing the AI companions' knowledge retrieval and contextual understanding.
+
+## Tech Stack
+
+*   **Framework:** Next.js (React)
+*   **Language:** TypeScript
+*   **Styling:** Tailwind CSS, Shadcn UI
+*   **Backend:** Next.js API Routes
+*   **ORM:** Prisma
+*   **Databases:**
+    *   SQL Database (e.g., PostgreSQL, MySQL - managed via Prisma)
+    *   Pinecone (Vector Database)
+*   **AI Libraries/Services:**
+    *   OpenAI API
+    *   Replicate API
+    *   Langchain
+    *   Vercel AI SDK
+*   **Authentication:** Clerk.js
+*   **Payments:** Stripe
+
 ## Getting Started
 
 First, run the development server:
