@@ -6,10 +6,13 @@ This project is an AI companion platform built with Next.js. It allows users to 
 
 ## Main Functions
 
-*   **AI Companion Interaction:** Users can engage in conversations with AI companions. The platform leverages various AI models and technologies like Langchain for complex interactions.
+*   **AI Companion Interaction:** Users engage in conversations with AI companions. This is powered by a Llama 2 model (via Replicate and Langchain) within a Retrieval Augmented Generation (RAG) architecture. The system uses a sophisticated memory management approach:
+    *   **Short-term Memory:** Recent conversation history is stored and retrieved from Redis (Upstash).
+    *   **Long-term Memory & Context:** Text embeddings are generated using OpenAI API (via Langchain) and stored in Pinecone. Relevant historical context is retrieved from Pinecone using similarity search to provide the AI with deeper conversational understanding.
+    *   **Real-time Streaming:** Responses are streamed to the user interface using the Vercel AI SDK.
 *   **User Authentication:** Secure user registration and login are handled by Clerk.js.
 *   **Subscription Management:** Stripe integration enables users to subscribe to premium features and manage their payment details.
-*   **Vector Database:** Pinecone is utilized for efficient similarity searches, likely enhancing the AI companions' knowledge retrieval and contextual understanding.
+*   **Data Persistence:** Core application data (user profiles, companion details, message metadata) is stored in a SQL database managed by Prisma.
 
 ## Tech Stack
 
@@ -17,15 +20,16 @@ This project is an AI companion platform built with Next.js. It allows users to 
 *   **Language:** TypeScript
 *   **Styling:** Tailwind CSS, Shadcn UI
 *   **Backend:** Next.js API Routes
-*   **ORM:** Prisma
-*   **Databases:**
-    *   SQL Database (e.g., PostgreSQL, MySQL - managed via Prisma)
-    *   Pinecone (Vector Database)
-*   **AI Libraries/Services:**
-    *   OpenAI API
-    *   Replicate API
-    *   Langchain
-    *   Vercel AI SDK
+*   **ORM:** Prisma (for SQL database interaction)
+*   **Databases & Data Stores:**
+    *   SQL Database (e.g., PostgreSQL, MySQL - for primary application data)
+    *   Pinecone (Vector Database - for AI long-term memory and semantic search)
+    *   Redis (via Upstash - for caching and AI short-term conversational memory)
+*   **AI & Machine Learning:**
+    *   **Language Models:** Llama 2 (via Replicate)
+    *   **Orchestration & Libraries:** Langchain (integrating LLMs, vector stores, memory)
+    *   **Embeddings:** OpenAI API (for generating text embeddings)
+    *   **Streaming & UI:** Vercel AI SDK
 *   **Authentication:** Clerk.js
 *   **Payments:** Stripe
 
